@@ -1,0 +1,23 @@
+{
+  "name": "learn-express",
+  "version": "1.0.0",
+  "description": "1.Boilerplate（http://html5boilerplate.com/）",
+  "main": "meadowlark.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-watch --presets es2015 meadowlark.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-watch": "^2.0.7"
+  }
+}
