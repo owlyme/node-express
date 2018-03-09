@@ -19,3 +19,7 @@ GIT
 如果你不了解Git，建议你看一下Jon Loeliger 的Version Control with Git (O’Reilly，http://
 shop.oreilly.com/product/9780596520137.do）。另外，Code School 也有很好的Git 入门课程
 （https://try.github.io/）。
+
+git clone https://github.com/EthanRBrown/web-development-with-node-and-express
+
+Markdown 文档（http://daringfireball.net/projects/markdown/）。
