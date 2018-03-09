@@ -23,3 +23,44 @@ shop.oreilly.com/product/9780596520137.do）。另外，Code School 也有很好
 git clone https://github.com/EthanRBrown/web-development-with-node-and-express
 
 Markdown 文档（http://daringfireball.net/projects/markdown/）。
+
+ Web 开发中，质量可以分解为四个维度：
+ 	1.到达率 , 2.功能 3.可用性 4.审美
+
+5.2 逻辑与展示
+
+5.3 测试的类型  : 单元测试和集成测试
+
+5.4 QA技术概览 
+	1.页面测试 用 Mocha 进行页面测试。
+	2.跨页测试 测试用的是 Zombie.js。
+	3.逻辑测试 逻辑测试会对逻辑域进行单元和集成测试。它只会测试JavaScript，跟所有表示功能分开。
+	4.去毛     是要找潜在的错误 会用 JSHint 做去毛。
+	5.链接检查 用 LinkChecker 做链接检查。
+
+5.5 运行你的服务器 
+	nodemon（https://npmjs.org/package/nodemon）非常受欢迎，并且它还有一个 Grunt 插件（https://www.npmjs.org/package/grunt-nodemon）。
+
+5.6 页面测试
+
+	测试通常需要一个assert（或expect）函数。Node框架中有这个函数，但浏览器中没有,所以我们要用 Chai 断言库：
+	测试驱动开发（TDD）更具可行性，你描述的是测试集和其中的测试。(Mocha 支持多种“界面”来控制测试的风格。默认界面是行为驱动开发（BDD），它让你以行为的方式思考。)
+
+
+
+document.referrer
+
+https://mochajs.org/
+http://chaijs.com/
+http://eslint.org/
+用 LinkChecker（http://wummel.github.io/linkchecker/）。
+QA test
+	mocha -u tdd -R spec qa/tests-crosspage.js 2>/dev/null
+	mocha -u tdd -R spec qa/tests-unit.js
+	mocha --compilers js:babel-core/register -u tdd -R spec qa/tests-unit.js
+
+
+Mocha http://blog.csdn.net/SimGenius/article/details/76152799
+	mocha --compilers js:babel-core/register qa/tests-unit.js
+首先要查看 Express 的 API 文档（http://expressjs.com/api.html）。
+有时就不得不深入研究 Express 源码（https://github.com/visionmedia/express/tree/master）。
