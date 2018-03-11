@@ -64,3 +64,16 @@ Mocha http://blog.csdn.net/SimGenius/article/details/76152799
 	mocha --compilers js:babel-core/register qa/tests-unit.js
 首先要查看 Express 的 API 文档（http://expressjs.com/api.html）。
 有时就不得不深入研究 Express 源码（https://github.com/visionmedia/express/tree/master）。
+
+只有在某些最简单的情况下才会使用JavaScript 生成 HTML。
+
+//修改handlebars 的扩展名
+const handlebars = handler.create({ extname: '.hbs',defaultLayout:'main' });
+app.engine('hbs', handlebars.engine);
+app.set('view engine', 'hbs');
+//公用模块
+app.use(function(req, res, next){
+if(!res.locals.partials) res.locals.partials = {};
+res.locals.partials.weather = getWeatherData();
+next();
+});

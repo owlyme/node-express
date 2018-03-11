@@ -1,21 +1,31 @@
 /*jshint esversion: 6 */
 import express from 'express';
-import handler from 'express3-handlebars';
+import handlebars from './lib/handlebars';
 import randomFortune from './lib/fortune';
+import getWeatherData from './lib/getWeatherData';
+import testroute from './lib/testroute'
+
 const l = console.log;
+
 
 const app = express();
 
-const handlebars = handler.create({ defaultLayout:'main' });
-app.engine('handlebars', handlebars.engine);
-app.set('view engine', 'handlebars');
+app.engine('hbs', handlebars.engine);
+app.set('view engine', 'hbs');
 app.set('port', process.env.PORT || 3000);
 
 app.disable('x-powered-by');
+app.set('view cache', true);
 //test
 app.use(function(req, res, next){
 	res.locals.showTests = app.get('env') !== 'production' &&
 	req.query.test === '1';
+	next();
+});
+app.use(function(req, res, next){
+	if(!res.locals.partials) res.locals.partials = {};
+	res.locals.partials.weather = getWeatherData;
+	res.locals.partials.smile  = 'haha';
 	next();
 });
 app.get('/', function(req, res){
@@ -23,8 +33,8 @@ app.get('/', function(req, res){
 });
 app.get('/about', function(req, res){
 	res.render('about', {
-					 fortune: randomFortune,
-					 pageTestScript: '/qa/tests-about.js' });
+					fortune: randomFortune,
+					pageTestScript: '/qa/tests-about.js' });
 });
 
 app.get('/tours/hood-river', function(req, res){
@@ -35,12 +45,11 @@ app.get('/tours/request-group-rate', function(req, res){
 });
 
 app.get('/headers', function(req,res){
-
-	res.sendFile(__dirname+'/public','hood-river.handlebars')
-
-	// res.send(s);
-	// res.json([1,2,3,4])
+	res.sendFile(__dirname+'/public','hood-river.hbs')
 });
+
+
+testroute(app);
 
 
 app.use(express.static(__dirname + '/public'));
