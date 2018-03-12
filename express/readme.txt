@@ -77,3 +77,8 @@ if(!res.locals.partials) res.locals.partials = {};
 res.locals.partials.weather = getWeatherData();
 next();
 });
+
+form
+	get => req.query
+	post => body-parser
+			req.xhr 和 req.accepts。

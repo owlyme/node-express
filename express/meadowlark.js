@@ -1,5 +1,7 @@
 /*jshint esversion: 6 */
 import express from 'express';
+import bodyParser from 'body-parser';
+// import multer from 'multer';
 import handlebars from './lib/handlebars';
 import randomFortune from './lib/fortune';
 import getWeatherData from './lib/getWeatherData';
@@ -16,6 +18,8 @@ app.set('port', process.env.PORT || 3000);
 
 app.disable('x-powered-by');
 app.set('view cache', true);
+app.use( bodyParser.urlencoded({ extended: false }) );
+
 //test
 app.use(function(req, res, next){
 	res.locals.showTests = app.get('env') !== 'production' &&
