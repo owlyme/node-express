@@ -39,6 +39,7 @@ export 	default (app)=>{
 
 	app.get('/newsletter', function(req, res){
 	// 我们会在后面学到 CSRF……目前，只提供一个虚拟值
+		console.log('newsletter')
 		res.render('newsletter', { csrf: 'CSRF token goes here' });
 	});
 
@@ -50,12 +51,10 @@ export 	default (app)=>{
 	// 	res.redirect(303, '/thank-you');
 	// });
 
-
 	app.post('/process', function(req, res){
-		console.log('CSRF token (from hidden form field): ' + req.body._csrf);
+		
 		console.log('Name (from visible form field): ' + req.body.name);
 		console.log('Email (from visible form field): ' + req.body.email);
-
 		if(req.xhr || req.accepts('json,html')==='json'){
 		// 如果发生错误，应该发送 { error: 'error description' }
 			res.send({ success: true });
