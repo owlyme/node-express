@@ -82,3 +82,23 @@ form
 	get => req.query
 	post => body-parser
 			req.xhr 和 req.accepts。
+				放弃$.ajax 用法 使用 axios
+
+formidbale 
+
+cookie
+
+npm install --save cookie-parser
+app.use(require('cookie-parser')(credentials.cookieSecret));
+res.cookie('monster', 'nom nom');
+res.cookie('signed_monster', 'nom nom', { signed: true });
+var monster = req.cookies.monster;
+var signedMonster = req.signedCookies.monster;
+res.clearCookie(KEY)
+会话 
+npm install --save express-session
+req.session.name= 'xy
+var colorScheme = req.session.colorScheme || 'dark';'
+req.session.userName = null; // 这会将 'userName' 设为 null
+							// 但不会移除它
+delete req.session.colorScheme; // 这会移除 'colorScheme'
